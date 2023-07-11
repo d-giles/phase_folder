@@ -24,7 +24,11 @@ def find_period(lc, method="BoxLeastSquares"):
     lc = lc[lc.quality == 0]
     if method=="BoxLeastSquares":
         pg = lc.normalize(unit='ppm').to_periodogram(method="BoxLeastSquares")
-    elif method==
+    else:
+        pg = lc.normalize(unit='ppm').to_periodogram(
+            minimum_period = 0.042,
+            oversample_factor=300
+        )
     period = pg.period_at_max_power  # first guess
     # pg1 = lc.normalize(unit='ppm').to_periodogram(maximum_period = 2.1*period.value,
     # oversample_factor=100)
