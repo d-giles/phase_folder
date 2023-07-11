@@ -2,7 +2,7 @@
 from scipy.signal import medfilt
 import math
 
-def find_period(lc):
+def find_period(lc, method="BoxLeastSquares"):
     """Calculates a period estimate for the given light curve
     
     Description:
@@ -22,9 +22,9 @@ def find_period(lc):
         best_guess (float): the best period centered around the lomb-sca
     """
     lc = lc[lc.quality == 0]
-
-    pg = lc.normalize(unit='ppm').to_periodogram(minimum_period = 0.042,
-                                                 method="BoxLeastSquares")
+    if method=="BoxLeastSquares":
+        pg = lc.normalize(unit='ppm').to_periodogram(method="BoxLeastSquares")
+    elif method==
     period = pg.period_at_max_power  # first guess
     # pg1 = lc.normalize(unit='ppm').to_periodogram(maximum_period = 2.1*period.value,
     # oversample_factor=100)
