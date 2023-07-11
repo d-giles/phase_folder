@@ -122,4 +122,4 @@ $ bump2version patch # possible: major / minor / patch
 $ git push
 $ git push --tags
 
-Travis will then deploy to PyPI if tests pass.
+Travis will then deploy to PyPI if tests pass. (not implemented yet...)
