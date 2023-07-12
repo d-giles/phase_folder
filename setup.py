@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ["pandas", "lightkurve", "scipy", "matplotlib", "ipywidgets"]
+requirements = [ "ipywidgets==7.6.5", "lightkurve==2.0.11", "matplotlib==3.3.4", "pandas==1.1.5", "scipy==1.5.3",]
 
 test_requirements = [ ]
 
@@ -39,6 +39,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/d-giles/phasefolder',
-    version='0.3.0',
+    version='0.3.1',
     zip_safe=False,
 )
