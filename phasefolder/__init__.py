@@ -3,5 +3,4 @@
 __author__ = """Daniel Giles"""
 __email__ = 'daniel.k.giles@gmail.com'
 __version__ = '0.1.0'
-from .phasefolder import find_period
-from .notebook_interact import notebook_interact
+from .phasefolder import find_period, notebook_interact
