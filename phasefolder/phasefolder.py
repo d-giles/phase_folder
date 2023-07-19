@@ -115,7 +115,7 @@ def csv_to_lc(file):
 def example_lcc():
     return [csv_to_lc("lightcurves/"+file) for file in os.listdir("lightcurves")]
 
-def notebook_interact(lcc, method="BoxLeastSquares"):
+def notebook_interact(lcc, method="BoxLeastSquares", save_to="./"):
     # elements
     ## index in lcc
     a = widgets.BoundedIntText(
@@ -214,11 +214,12 @@ def notebook_interact(lcc, method="BoxLeastSquares"):
     def on_save_clicked(button):
         """Saves the plot and the folded light curve data
         """
-        label = lcc[a.value].label
+        lc = lcc[a.value]
+        label = lc.label
         fig = f(a.value, b.value, c.value)
         fig.savefig(f"{label}.png")
         folded_lc = lc.fold(b.value, normalize_phase=False)
-        folded_lc.to_csv(f"{label}.csv", overwrite=True);
+        folded_lc.to_csv(f"{save_to}{label}.csv", overwrite=True);
 
     # linking
     a.observe(update_best_guess, 'value')
